@@ -16,6 +16,7 @@ class _MyAppState extends State<MyApp> {
   String url = "http://server-23.stream-server.nl:8438";
 
   bool isPlaying = false;
+  bool isVisible = true;
 
   @override
   void initState() {
@@ -28,7 +29,7 @@ class _MyAppState extends State<MyApp> {
     print('Audio Start OK');
   }
 
-  Future play() async {
+  Future Play() async {
     await FlutterRadio.play(url: url);
     setState(() {
     });
@@ -43,55 +44,56 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      title: 'IndieXL Online Radio',
         debugShowCheckedModeBanner: false,
         home: new Scaffold(
           appBar: new AppBar(
-            title: const Text('indiexl online radio'),
-            backgroundColor: Colors.purpleAccent,
+            title: const Text('IndieXL Online Radio'),
+            backgroundColor: Colors.blueGrey.shade900,
             centerTitle: true,
           ),
-          body: new Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(
-                        'https://i.pinimg.com/originals/3b/2d/96/3b2d96c01613168b68f379329c3da809.jpg'),
-                    fit: BoxFit.fill),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          body: Container(
+            color: Colors.blueGrey.shade900,
+            child: new Column(
                 children: <Widget>[
-                  Align(
-                    alignment: FractionalOffset.bottomCenter,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 25),
-                      child: RaisedButton(
-                        elevation: 30,
-                        color: Colors.greenAccent,
-                        onPressed: isPlaying ? null : () => play(),
-                        child: Icon(
-                          Icons.play_circle_outline,
-                          size: 50,
-                        ),
-                      ),
+                  Expanded(
+                    flex: 7,
+                    child: Icon(
+                      Icons.radio, size: 250,
+                      color: Colors.white,
                     ),
                   ),
-                  Align(
-                    alignment: FractionalOffset.bottomCenter,
+                  Expanded(
+                    flex: 2,
                     child: Padding(
-                      padding: EdgeInsets.only(bottom: 25),
-                      child: RaisedButton(
-                        elevation: 30,
-                        color: Colors.greenAccent,
-                        onPressed: () => FlutterRadio.pause(url: url),
-                        child: Icon(
+                      padding: const EdgeInsets.only(right: 40),
+                      child: Align(
+                        alignment: FractionalOffset.center,
+                        child: IconButton(icon: isPlaying? Icon(
                           Icons.pause_circle_outline,
-                          size: 50,
+                          size: 80,
+                          color: Colors.white,
+                        )
+                            : Icon(
+                          Icons.play_circle_outline,
+                          color: Colors.white,
+                          size: 80,
+                        ),
+                            onPressed: (){
+                          setState(() {
+                            FlutterRadio.play(url: url);
+                            isPlaying = !isPlaying;
+                            isVisible = !isVisible;
+                          });
+                            },
                         ),
                       ),
                     ),
                   ),
+                  SizedBox(height: 50,)
                 ],
-              )),
+            ),
+          ),
         ));
   }
 }
