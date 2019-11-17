@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:flutter_radio/flutter_radio.dart';
 
 void main() => runApp(new MyApp());
