@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'dart:async';
 
 import 'package:flutter_radio/flutter_radio.dart';
@@ -27,18 +26,6 @@ class _MyAppState extends State<MyApp> {
   Future<void> audioStart() async {
     await FlutterRadio.audioStart();
     print('Audio Start OK');
-  }
-
-  Future Play() async {
-    await FlutterRadio.play(url: url);
-    setState(() {
-    });
-  }
-
-  Future pause() async{
-    setState(() async{
-      await FlutterRadio.pause(url: url);
-    });
   }
 
   @override
