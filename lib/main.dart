@@ -12,6 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
   String url = "http://server-23.stream-server.nl:8438";
 
   bool isPlaying = false;
