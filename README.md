@@ -6,7 +6,7 @@ You can read an article about this project, which is on medium: https://medium.c
 
 Screenshot below:
 
-<img src="https://github.com/Wizpna/online_radio/blob/master/onlineRadio.jpg"  title="Google_Search">
+<img src="https://github.com/Wizpna/online_radio/blob/master/onlineRadio.jpg"  title="online_radio">
 
 Contact - Let's become friends
 
